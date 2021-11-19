@@ -1,7 +1,8 @@
-import React from "react";
-import { Switch, Route, Link } from "react-router-dom"; // use react router to create different URL routes
-// used to route the differnt React components
-import "bootstrap/dist/css/bootstrap.min.css"; // to style the app
+import React from "react"
+import {/*Switch*/ Routes, Route, Link} from "react-router-dom" // use react router to create different URL routes
+                                                                // used to route the differnt React components
+// https://stackoverflow.com/questions/63124161/attempted-import-error-switch-is-not-exported-from-react-router-dom
+import "bootstrap/dist/css/bootstrap.min.css" // to style the app
 
 import AddReview from "./components/add-reviews";
 import Restaurant from "./components/restaurant";
@@ -22,9 +23,9 @@ function App() {
   async function logout() {
     setUser(null);
   }
-  
+
   return (
-    <div className="App">
+    <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/restaurants" className="navbar-brand">
           Restaurant Reviews
@@ -48,6 +49,29 @@ function App() {
           </li>
         </div>
       </nav>
+
+      <div className="container mt-3">
+        <Routes> {/* use a switch to switch between differnt routes */}
+          <Route path="/" element/*component*/={<RestaurantsList />} />
+          <Route path="/restaurants" element/*component*/={<RestaurantsList />} />
+          <Route
+            path="/restaurants/:id/review" 
+
+            // using render instead to pass in props and user to component
+            render={(props) => (
+              <AddReview {...props} user={user} />
+            )}
+          />
+          <Route
+            path="/restaurants/:id"
+            element={<Restaurant user={user}/>}
+          />
+          <Route
+            path="/login"
+            element={<Login login={login}/>}
+          />
+        </Routes>
+      </div>
     </div>
   );
 }
