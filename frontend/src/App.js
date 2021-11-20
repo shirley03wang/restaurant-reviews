@@ -63,8 +63,8 @@ function App() {
             )}
           />
           <Route
-            path="/restaurants/:id"
-            element={<Restaurant user={user}/>}
+            path="/restaurants/:restaurant_id"
+            element={<Restaurant user={user} />}
           />
           <Route
             path="/login"
