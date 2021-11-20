@@ -5,7 +5,7 @@ import {/*Switch*/ Routes, Route, Link} from "react-router-dom" // use react rou
 import "bootstrap/dist/css/bootstrap.min.css" // to style the app
 
 import AddReview from "./components/add-reviews";
-import Restaurant from "./components/restaurant";
+import Restaurant from "./components/restaurants";
 import RestaurantsList from "./components/restaurants-list";
 import Login from "./components/login";
 
@@ -56,11 +56,7 @@ function App() {
           <Route path="/restaurants" element/*component*/={<RestaurantsList />} />
           <Route
             path="/restaurants/:id/review" 
-
-            // using render instead to pass in props and user to component
-            render={(props) => (
-              <AddReview {...props} user={user} />
-            )}
+            element={<AddReview user={user} />}
           />
           <Route
             path="/restaurants/:restaurant_id"

@@ -38,7 +38,7 @@ const Restaurant = props => {
     // index = index of the review from the review array which is the review variable
     // from the state
     // you can only delete is you're logged in as the user who created the review
-    RestaurantDataService.deleteReview(reviewId).then(
+    RestaurantDataService.deleteReview(reviewId, props.user.id).then(
       response => {
         // set restaurant array be the array without the delete restaurant
         // take previous state of the restaurant array, remove the review you want to
@@ -85,7 +85,7 @@ const Restaurant = props => {
                           <strong>Date: </strong>{review.date}
                         </p>
                         {/*show button depending on what user is logged in*/}
-                        {props.user && restaurant_id === review.user_id && 
+                        {props.user && props.user.id === review.user_id && 
                            <div className="row">
                              <a onClick={() => deleteReview(review._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
                              <Link to={{
