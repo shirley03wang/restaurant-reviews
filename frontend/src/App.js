@@ -55,12 +55,12 @@ function App() {
           <Route path="/" element/*component*/={<RestaurantsList />} />
           <Route path="/restaurants" element/*component*/={<RestaurantsList />} />
           <Route
-            path="/restaurants/:id/review" 
-            element={<AddReview user={user} />}
+            path="/restaurants/:restaurant_id/review" 
+            element={<AddReview user={user}/>}
           />
           <Route
             path="/restaurants/:restaurant_id"
-            element={<Restaurant user={user} />}
+            element={<Restaurant user={user}/>}
           />
           <Route
             path="/login"
